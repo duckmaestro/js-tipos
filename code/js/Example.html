@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/2000/xmlns">
+<head>
+	<title>js-tipo - Example</title>
+
+	<!-- STEP 1: specify the base path to the JameE scripts. -->
+	<script type="text/javascript">	var js_tipos_base = "./js-tipos/";</script>
+
+	<!-- STEP 2: include the boostrapper. -->
+	<script type="text/javascript" src="js-tipos.js"></script>
+
+
+</head>
+<body>
+
+	<!-- STEP 4: specify "on ready" code to be run once JameE is loaded. -->
+	<script type="text/javascript">//<![CDATA[	
+		
+		$tipos(function () {
+
+			alert('tipos loaded!');
+
+			////
+			// EXAMPLE 1: load a data file.
+//			$load(
+//				"Examples/Example-Game.obj.txt",
+//				function (oData) {
+//					oEngine.setScene(oData);
+//
+//				}
+//			);
+		});
+
+	//]]></script>
+</body>
+</html>
