@@ -3,33 +3,62 @@
 <head>
 	<title>js-tipos - Example</title>
 
-	<!-- STEP 1: specify the base path to the js-tipos scripts. -->
-	<script type="text/javascript">	var js_tipos_base = "./js/";</script>
-
+	<!-- STEP 1: specify some base paths -->
+	<script type="text/javascript">//<![CDATA[
+		var jstipos_base = "./js/"; // base path to js-tipos
+		var user_base = "./"; // base path to user types
+	//]]></script>
+	
 	<!-- STEP 2: include the boostrapper. -->
 	<script type="text/javascript" src="./js/js-tipos.js"></script>
-
-
+	
+	
+	
 </head>
 <body>
 
-	<!-- STEP 4: specify "on ready" code to be run once js-tipos is loaded. -->
+	<h1>js-tipos Example</h1>
+
+
+	
+	
+	
 	<script type="text/javascript">//<![CDATA[	
 		
-		$tipos(function () {
-
-			alert('tipos loaded!');
-
-			////
-			// EXAMPLE 1: load a data file.
-//			$load(
-//				"Examples/Example-Game.obj.txt",
-//				function (oData) {
-//					oEngine.setScene(oData);
-//
-//				}
-//			);
-		});
+		//<!-- STEP 3: load the boostrapper and provide a callback -->
+		$tipos(function () { window.onJsTiposLoaded(); });
+		
+		//<!-- DONE. Now we can load our custom types, execute code, etc. -->
+		function onJsTiposLoaded()
+		{
+			alert('js-tipos loaded.');
+			
+			// let's include a file containing types definitions.
+			$include (["ExampleTypes.js"], onCustomTypesLoaded);
+		}
+		
+		function onCustomTypesLoaded()
+		{
+			alert('ExampleTypes.js loaded.');
+		
+			// create some instances
+			var myCar = new ExampleNamespace.Car();
+			alert("Car created.");
+			alert(myCar.toString());
+			
+			// load some serialized data
+			$load("Example.obj.txt", onObjectsLoaded);
+		}
+		
+		function onObjectsLoaded(objectGraph)
+		{
+			alert("Data from Example.obj.txt loaded.");
+			
+			// grab the car from the object graph
+			var myCar2 = objectGraph.myCar2;
+			alert('Car2 found.');
+			alert(myCar2.toString());
+		}
 
 	//]]></script>
 </body>

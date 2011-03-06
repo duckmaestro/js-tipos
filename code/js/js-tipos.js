@@ -31,13 +31,13 @@ if(typeof($tipos) === "undefined")
 	$tipos = null;
 }
 
-if (js_tipos_base == null) {
-	js_tipos_base = "/";
+if (jstipos_base == null) {
+	jstipos_base = "/";
 }
 
 (function(){
 
-	var strBasePath = js_tipos_base;
+	var strBasePath = jstipos_base;
 	
 	var iIncludeCounter = Number.MAX_VALUE;
 
@@ -89,10 +89,21 @@ if (js_tipos_base == null) {
 				--iIncludeCounter;
 
 				var iNumFnOnReady = arr_fnOnReady.length;
+				
+				// copy into a new array
+				var arr_fnOnReadCopy = [];
+				
 				for(var iFn = 0; iFn < iNumFnOnReady; ++iFn)
 				{
-					arr_fnOnReady[iFn]();
+					arr_fnOnReadCopy[iFn] = arr_fnOnReady[iFn];
 				}
+				
+				window.setTimeout(function(){ 
+					for(var iFn = 0; iFn < arr_fnOnReadCopy.length; ++iFn)
+					{
+						arr_fnOnReadCopy[iFn]();
+					}
+				},1);
 			}
 			else {
 				--iIncludeCounter;	

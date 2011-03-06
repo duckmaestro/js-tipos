@@ -376,7 +376,10 @@ $class_static(
 	// CONSTRUCTOR
 	/////////////
 	_ctor: function(params) {
-		if (typeof (js_tipos_base) === "string" && js_tipos_base.length > 0) {
+		if(typeof (user_base) === "string" && user_base.length > 0) {
+			this._strBasePath = user_base;
+		}
+		else if (typeof (js_tipos_base) === "string" && js_tipos_base.length > 0) {
 			this._strBasePath = js_tipos_base;
 		}
 	},
@@ -473,6 +476,10 @@ $class_static(
 	include: function(arr_strPaths, fnOnLoaded) {
 		var This = this;
 
+		if (typeof arr_strPaths === "string")
+		{ // convert scalar to array.
+			arr_strPaths = [arr_strPaths];
+		}
 
 		// verify data and convert paths
 		var arr_strPathsExpanded = [];

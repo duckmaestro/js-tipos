@@ -283,7 +283,7 @@ $tipos.Classer = {
 		if (strType == null) {
 			return oValue;
 		}
-		JameE.Base.Classer.requireType(oValue, strType);
+		$tipos.Classer.requireType(oValue, strType);
 		return oValue;
 	},
 

@@ -1,17 +1,6 @@
-﻿oScene: Scene
-{
-	[]: ImageRegion {
-			image: Image { path: "Assets/Images/sample_gradient.jpg" },
-			position: Vector3 { x: 0, y: 0 }
-			size: 200
-			preserveSourceAspectRatio: true
+﻿root:{
+	myCar2: ExampleNamespace.Car {
+			color: "black"
+			gas: 32.1
 		}
-
-	[]: TextRegion 
-		{ 
-			text: "Hello, world."
-			position: Vector3 { x: -50, y: -50, z:1 } 
-			color: "#FFFFFF"
-		}
-
 }
